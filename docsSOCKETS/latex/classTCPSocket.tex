@@ -1,0 +1,140 @@
+\hypertarget{classTCPSocket}{}\doxysection{Класс TCPSocket}
+\label{classTCPSocket}\index{TCPSocket@{TCPSocket}}
+
+
+{\ttfamily \#include $<$Practical\+Socket.\+h$>$}
+
+
+
+Граф наследования\+:TCPSocket\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{classTCPSocket__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса TCPSocket\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{classTCPSocket__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTCPSocket_a7a50427a401d1a6f3209d51818bad901}{TCPSocket}} ()  throw (\+Socket\+Exception)
+\item 
+\mbox{\hyperlink{classTCPSocket_a7b246b66f6dc3246ab2777b771e5f917}{TCPSocket}} (const string \&foreign\+Address, unsigned short foreign\+Port)  throw (\+Socket\+Exception)
+\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTCPSocket_a4763ac3be0d7d5e143884bef45e351c5}{TCPSocket}} (int new\+Conn\+SD)
+\end{DoxyCompactItemize}
+\doxysubsection*{Друзья}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classTCPSocket_ae8bcdc0d25881a17b23e557296236fa9}{TCPServer\+Socket}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Дополнительные унаследованные члены}
+
+
+\doxysubsection{Подробное описание}
+TCP socket for communication with other TCP sockets 
+
+См. определение в файле \mbox{\hyperlink{PracticalSocket_8h_source}{Practical\+Socket.\+h}} строка \mbox{\hyperlink{PracticalSocket_8h_source_l00190}{190}}
+
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classTCPSocket_a7a50427a401d1a6f3209d51818bad901}\label{classTCPSocket_a7a50427a401d1a6f3209d51818bad901}} 
+\index{TCPSocket@{TCPSocket}!TCPSocket@{TCPSocket}}
+\index{TCPSocket@{TCPSocket}!TCPSocket@{TCPSocket}}
+\doxysubsubsection{\texorpdfstring{TCPSocket()}{TCPSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily TCPSocket\+::\+TCPSocket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw ( \mbox{\hyperlink{classSocketException}{Socket\+Exception}}) }
+
+Construct a TCP socket with no connection 
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classSocketException}{Socket\+Exception}}} & thrown if unable to create TCP socket \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{PracticalSocket_8cpp_source}{Practical\+Socket.\+cpp}} строка \mbox{\hyperlink{PracticalSocket_8cpp_source_l00236}{236}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00237                            : \mbox{\hyperlink{classCommunicatingSocket}{CommunicatingSocket}}(SOCK\_STREAM, }
+\DoxyCodeLine{00238     IPPROTO\_TCP) \{}
+\DoxyCodeLine{00239 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTCPSocket_a7b246b66f6dc3246ab2777b771e5f917}\label{classTCPSocket_a7b246b66f6dc3246ab2777b771e5f917}} 
+\index{TCPSocket@{TCPSocket}!TCPSocket@{TCPSocket}}
+\index{TCPSocket@{TCPSocket}!TCPSocket@{TCPSocket}}
+\doxysubsubsection{\texorpdfstring{TCPSocket()}{TCPSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily TCPSocket\+::\+TCPSocket (\begin{DoxyParamCaption}\item[{const string \&}]{foreign\+Address,  }\item[{unsigned short}]{foreign\+Port }\end{DoxyParamCaption}) throw ( \mbox{\hyperlink{classSocketException}{Socket\+Exception}}) }
+
+Construct a TCP socket with a connection to the given foreign address and port 
+\begin{DoxyParams}{Аргументы}
+{\em foreign\+Address} & foreign address (IP address or name) \\
+\hline
+{\em foreign\+Port} & foreign port \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classSocketException}{Socket\+Exception}}} & thrown if unable to create TCP socket \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{PracticalSocket_8cpp_source}{Practical\+Socket.\+cpp}} строка \mbox{\hyperlink{PracticalSocket_8cpp_source_l00241}{241}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00242                            : \mbox{\hyperlink{classCommunicatingSocket}{CommunicatingSocket}}(SOCK\_STREAM, IPPROTO\_TCP) \{}
+\DoxyCodeLine{00243   \mbox{\hyperlink{classCommunicatingSocket_a9192374d9baab8e189860aa8d913683c}{connect}}(foreignAddress, foreignPort);}
+\DoxyCodeLine{00244 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTCPSocket_a4763ac3be0d7d5e143884bef45e351c5}\label{classTCPSocket_a4763ac3be0d7d5e143884bef45e351c5}} 
+\index{TCPSocket@{TCPSocket}!TCPSocket@{TCPSocket}}
+\index{TCPSocket@{TCPSocket}!TCPSocket@{TCPSocket}}
+\doxysubsubsection{\texorpdfstring{TCPSocket()}{TCPSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily TCPSocket\+::\+TCPSocket (\begin{DoxyParamCaption}\item[{int}]{new\+Conn\+SD }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+См. определение в файле \mbox{\hyperlink{PracticalSocket_8cpp_source}{Practical\+Socket.\+cpp}} строка \mbox{\hyperlink{PracticalSocket_8cpp_source_l00246}{246}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00246                                   : \mbox{\hyperlink{classCommunicatingSocket}{CommunicatingSocket}}(newConnSD) \{}
+\DoxyCodeLine{00247 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Документация по друзьям класса и функциям, относящимся к классу}
+\mbox{\Hypertarget{classTCPSocket_ae8bcdc0d25881a17b23e557296236fa9}\label{classTCPSocket_ae8bcdc0d25881a17b23e557296236fa9}} 
+\index{TCPSocket@{TCPSocket}!TCPServerSocket@{TCPServerSocket}}
+\index{TCPServerSocket@{TCPServerSocket}!TCPSocket@{TCPSocket}}
+\doxysubsubsection{\texorpdfstring{TCPServerSocket}{TCPServerSocket}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classTCPServerSocket}{TCPServer\+Socket}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+См. определение в файле \mbox{\hyperlink{PracticalSocket_8h_source}{Practical\+Socket.\+h}} строка \mbox{\hyperlink{PracticalSocket_8h_source_l00210}{210}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Sockets/\mbox{\hyperlink{PracticalSocket_8h}{Practical\+Socket.\+h}}\item 
+Sockets/\mbox{\hyperlink{PracticalSocket_8cpp}{Practical\+Socket.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,961 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>FREEMODBUS: Файл freemodbus-v1.5.0/modbus/mb.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">FREEMODBUS
+   </div>
+   <div id="projectbrief">C++ utilities for high performance numerical computing</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('mb_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макросы</a> &#124;
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle"><div class="title">Файл mb.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;stdlib.h&quot;</code><br />
+<code>#include &quot;string.h&quot;</code><br />
+<code>#include &quot;port.h&quot;</code><br />
+<code>#include &quot;mb.h&quot;</code><br />
+<code>#include &quot;mbconfig.h&quot;</code><br />
+<code>#include &quot;mbframe.h&quot;</code><br />
+<code>#include &quot;mbproto.h&quot;</code><br />
+<code>#include &quot;mbfunc.h&quot;</code><br />
+<code>#include &quot;mbport.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для mb.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="mb_8c__incl.png" border="0" usemap="#afreemodbus-v1_85_80_2modbus_2mb_8c" alt=""/></div>
+<map name="afreemodbus-v1_85_80_2modbus_2mb_8c" id="afreemodbus-v1_85_80_2modbus_2mb_8c">
+<area shape="rect" title=" " alt="" coords="275,5,485,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,69,104"/>
+<area shape="rect" title=" " alt="" coords="94,79,159,104"/>
+<area shape="rect" title=" " alt="" coords="183,79,238,104"/>
+<area shape="rect" title=" " alt="" coords="263,79,313,104"/>
+<area shape="rect" title=" " alt="" coords="337,79,423,104"/>
+<area shape="rect" title=" " alt="" coords="447,79,529,104"/>
+<area shape="rect" title=" " alt="" coords="553,79,633,104"/>
+<area shape="rect" title=" " alt="" coords="657,79,732,104"/>
+<area shape="rect" title=" " alt="" coords="757,79,830,104"/>
+</map>
+</div>
+</div>
+<p><a href="mb_8c_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a63c1fbefc04d96d29ef84407e22c4e3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a63c1fbefc04d96d29ef84407e22c4e3e">MB_PORT_HAS_CLOSE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a63c1fbefc04d96d29ef84407e22c4e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca">STATE_ENABLED</a>
+, <a class="el" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b">STATE_DISABLED</a>
+, <a class="el" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bae2477750e043f9c82868690f0162f232">STATE_NOT_INITIALIZED</a>
+ }</td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a622dbe6b38ff1d255523d4736fa3da26"><td class="memItemLeft" align="right" valign="top">eMBErrorCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a622dbe6b38ff1d255523d4736fa3da26">eMBInit</a> (eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity)</td></tr>
+<tr class="separator:a622dbe6b38ff1d255523d4736fa3da26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f6e66893b2388a602ac453253a00784"><td class="memItemLeft" align="right" valign="top">eMBErrorCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a5f6e66893b2388a602ac453253a00784">eMBRegisterCB</a> (UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler)</td></tr>
+<tr class="separator:a5f6e66893b2388a602ac453253a00784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac20080d92be2934456e2a5d27cd36310"><td class="memItemLeft" align="right" valign="top">eMBErrorCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#ac20080d92be2934456e2a5d27cd36310">eMBClose</a> (void)</td></tr>
+<tr class="separator:ac20080d92be2934456e2a5d27cd36310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab697be370833d562e6b016626d996132"><td class="memItemLeft" align="right" valign="top">eMBErrorCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#ab697be370833d562e6b016626d996132">eMBEnable</a> (void)</td></tr>
+<tr class="separator:ab697be370833d562e6b016626d996132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc2a31ec41fc276ab3c3ac705defdf3"><td class="memItemLeft" align="right" valign="top">eMBErrorCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#abcc2a31ec41fc276ab3c3ac705defdf3">eMBDisable</a> (void)</td></tr>
+<tr class="separator:abcc2a31ec41fc276ab3c3ac705defdf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12648c98d45f768ba878fbcee46caca5"><td class="memItemLeft" align="right" valign="top">eMBErrorCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a12648c98d45f768ba878fbcee46caca5">eMBPoll</a> (void)</td></tr>
+<tr class="separator:a12648c98d45f768ba878fbcee46caca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a49d81a2027be5b1914a9aca31bb1a9ae"><td class="memItemLeft" align="right" valign="top">static UCHAR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a49d81a2027be5b1914a9aca31bb1a9ae">ucMBAddress</a></td></tr>
+<tr class="separator:a49d81a2027be5b1914a9aca31bb1a9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a288653bd38728bea3b3c705f25d87483"><td class="memItemLeft" align="right" valign="top">static eMBMode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a288653bd38728bea3b3c705f25d87483">eMBCurrentMode</a></td></tr>
+<tr class="separator:a288653bd38728bea3b3c705f25d87483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ccc6954ab86e45b13f3c0536fd66315"><td class="memItemLeft" align="right" valign="top">static enum  { ... } &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> = <a class="el" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bae2477750e043f9c82868690f0162f232">STATE_NOT_INITIALIZED</a></td></tr>
+<tr class="separator:a1ccc6954ab86e45b13f3c0536fd66315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9daf4765e9a354a64f171108ace3094"><td class="memItemLeft" align="right" valign="top">static peMBFrameSend&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#ae9daf4765e9a354a64f171108ace3094">peMBFrameSendCur</a></td></tr>
+<tr class="separator:ae9daf4765e9a354a64f171108ace3094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5cc9150f4c154d4c4983fa551b0c2c1"><td class="memItemLeft" align="right" valign="top">static pvMBFrameStart&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#ae5cc9150f4c154d4c4983fa551b0c2c1">pvMBFrameStartCur</a></td></tr>
+<tr class="separator:ae5cc9150f4c154d4c4983fa551b0c2c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a043a961601eba48ca372b99f5c67ec3c"><td class="memItemLeft" align="right" valign="top">static pvMBFrameStop&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a043a961601eba48ca372b99f5c67ec3c">pvMBFrameStopCur</a></td></tr>
+<tr class="separator:a043a961601eba48ca372b99f5c67ec3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e7657161e4e14b266f0f20d3ad8eda5"><td class="memItemLeft" align="right" valign="top">static peMBFrameReceive&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a9e7657161e4e14b266f0f20d3ad8eda5">peMBFrameReceiveCur</a></td></tr>
+<tr class="separator:a9e7657161e4e14b266f0f20d3ad8eda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5110f3d47305125c738986dbe85e0d"><td class="memItemLeft" align="right" valign="top">static pvMBFrameClose&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#aef5110f3d47305125c738986dbe85e0d">pvMBFrameCloseCur</a></td></tr>
+<tr class="separator:aef5110f3d47305125c738986dbe85e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ff9d563210c04e3afb414b9db75154a"><td class="memItemLeft" align="right" valign="top">BOOL(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a6ff9d563210c04e3afb414b9db75154a">pxMBFrameCBByteReceived</a> )(void)</td></tr>
+<tr class="separator:a6ff9d563210c04e3afb414b9db75154a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46ac9d979eaaeb885415014a0cb350b2"><td class="memItemLeft" align="right" valign="top">BOOL(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a46ac9d979eaaeb885415014a0cb350b2">pxMBFrameCBTransmitterEmpty</a> )(void)</td></tr>
+<tr class="separator:a46ac9d979eaaeb885415014a0cb350b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ca010d1cf1b3bda066f0d65641d9055"><td class="memItemLeft" align="right" valign="top">BOOL(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a3ca010d1cf1b3bda066f0d65641d9055">pxMBPortCBTimerExpired</a> )(void)</td></tr>
+<tr class="separator:a3ca010d1cf1b3bda066f0d65641d9055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9363e9558a3370aa7f877b5414e83a31"><td class="memItemLeft" align="right" valign="top">BOOL(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a9363e9558a3370aa7f877b5414e83a31">pxMBFrameCBReceiveFSMCur</a> )(void)</td></tr>
+<tr class="separator:a9363e9558a3370aa7f877b5414e83a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a590a5400a72de0dcbce5f383a67a5093"><td class="memItemLeft" align="right" valign="top">BOOL(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#a590a5400a72de0dcbce5f383a67a5093">pxMBFrameCBTransmitFSMCur</a> )(void)</td></tr>
+<tr class="separator:a590a5400a72de0dcbce5f383a67a5093"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7285b4571ef7138b23ddc3b2d079539"><td class="memItemLeft" align="right" valign="top">static xMBFunctionHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a> [MB_FUNC_HANDLERS_MAX]</td></tr>
+<tr class="separator:af7285b4571ef7138b23ddc3b2d079539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Макросы</h2>
+<a id="a63c1fbefc04d96d29ef84407e22c4e3e" name="a63c1fbefc04d96d29ef84407e22c4e3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63c1fbefc04d96d29ef84407e22c4e3e">&#9670;&#160;</a></span>MB_PORT_HAS_CLOSE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MB_PORT_HAS_CLOSE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00057">57</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Перечисления</h2>
+<a id="a06fc87d81c62e9abb8790b6e5713c55b" name="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06fc87d81c62e9abb8790b6e5713c55b">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca" name="a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca"></a>STATE_ENABLED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b" name="a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b"></a>STATE_DISABLED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bae2477750e043f9c82868690f0162f232" name="a06fc87d81c62e9abb8790b6e5713c55bae2477750e043f9c82868690f0162f232"></a>STATE_NOT_INITIALIZED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00065">65</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
+<div class="line"><span class="lineno">   67</span>    <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca">STATE_ENABLED</a>,</div>
+<div class="line"><span class="lineno">   68</span>    <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b">STATE_DISABLED</a>,</div>
+<div class="line"><span class="lineno">   69</span>    <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bae2477750e043f9c82868690f0162f232">STATE_NOT_INITIALIZED</a></div>
+<div class="line"><span class="lineno">   70</span>} <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> = <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bae2477750e043f9c82868690f0162f232">STATE_NOT_INITIALIZED</a>;</div>
+<div class="ttc" id="amb_8c_html_a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca"><div class="ttname"><a href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca">STATE_ENABLED</a></div><div class="ttdeci">@ STATE_ENABLED</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00067">mb.c:67</a></div></div>
+<div class="ttc" id="amb_8c_html_a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b"><div class="ttname"><a href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b">STATE_DISABLED</a></div><div class="ttdeci">@ STATE_DISABLED</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00068">mb.c:68</a></div></div>
+<div class="ttc" id="amb_8c_html_a06fc87d81c62e9abb8790b6e5713c55bae2477750e043f9c82868690f0162f232"><div class="ttname"><a href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bae2477750e043f9c82868690f0162f232">STATE_NOT_INITIALIZED</a></div><div class="ttdeci">@ STATE_NOT_INITIALIZED</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00070">mb.c:69</a></div></div>
+<div class="ttc" id="amb_8c_html_a1ccc6954ab86e45b13f3c0536fd66315"><div class="ttname"><a href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a></div><div class="ttdeci">static enum @0 eMBState</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="ac20080d92be2934456e2a5d27cd36310" name="ac20080d92be2934456e2a5d27cd36310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac20080d92be2934456e2a5d27cd36310">&#9670;&#160;</a></span>eMBClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">eMBErrorCode eMBClose </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00273">273</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  274</span>{</div>
+<div class="line"><span class="lineno">  275</span>    eMBErrorCode    eStatus = MB_ENOERR;</div>
+<div class="line"><span class="lineno">  276</span> </div>
+<div class="line"><span class="lineno">  277</span>    <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> == <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b">STATE_DISABLED</a> )</div>
+<div class="line"><span class="lineno">  278</span>    {</div>
+<div class="line"><span class="lineno">  279</span>        <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#aef5110f3d47305125c738986dbe85e0d">pvMBFrameCloseCur</a> != NULL )</div>
+<div class="line"><span class="lineno">  280</span>        {</div>
+<div class="line"><span class="lineno">  281</span>            <a class="code hl_variable" href="mb_8c.html#aef5110f3d47305125c738986dbe85e0d">pvMBFrameCloseCur</a>(  );</div>
+<div class="line"><span class="lineno">  282</span>        }</div>
+<div class="line"><span class="lineno">  283</span>    }</div>
+<div class="line"><span class="lineno">  284</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  285</span>    {</div>
+<div class="line"><span class="lineno">  286</span>        eStatus = MB_EILLSTATE;</div>
+<div class="line"><span class="lineno">  287</span>    }</div>
+<div class="line"><span class="lineno">  288</span>    <span class="keywordflow">return</span> eStatus;</div>
+<div class="line"><span class="lineno">  289</span>}</div>
+<div class="ttc" id="amb_8c_html_aef5110f3d47305125c738986dbe85e0d"><div class="ttname"><a href="mb_8c.html#aef5110f3d47305125c738986dbe85e0d">pvMBFrameCloseCur</a></div><div class="ttdeci">static pvMBFrameClose pvMBFrameCloseCur</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00079">mb.c:79</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abcc2a31ec41fc276ab3c3ac705defdf3" name="abcc2a31ec41fc276ab3c3ac705defdf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcc2a31ec41fc276ab3c3ac705defdf3">&#9670;&#160;</a></span>eMBDisable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">eMBErrorCode eMBDisable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00310">310</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  311</span>{</div>
+<div class="line"><span class="lineno">  312</span>    eMBErrorCode    eStatus;</div>
+<div class="line"><span class="lineno">  313</span> </div>
+<div class="line"><span class="lineno">  314</span>    <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> == <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca">STATE_ENABLED</a> )</div>
+<div class="line"><span class="lineno">  315</span>    {</div>
+<div class="line"><span class="lineno">  316</span>        <a class="code hl_variable" href="mb_8c.html#a043a961601eba48ca372b99f5c67ec3c">pvMBFrameStopCur</a>(  );</div>
+<div class="line"><span class="lineno">  317</span>        <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> = <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b">STATE_DISABLED</a>;</div>
+<div class="line"><span class="lineno">  318</span>        eStatus = MB_ENOERR;</div>
+<div class="line"><span class="lineno">  319</span>    }</div>
+<div class="line"><span class="lineno">  320</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> == <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b">STATE_DISABLED</a> )</div>
+<div class="line"><span class="lineno">  321</span>    {</div>
+<div class="line"><span class="lineno">  322</span>        eStatus = MB_ENOERR;</div>
+<div class="line"><span class="lineno">  323</span>    }</div>
+<div class="line"><span class="lineno">  324</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  325</span>    {</div>
+<div class="line"><span class="lineno">  326</span>        eStatus = MB_EILLSTATE;</div>
+<div class="line"><span class="lineno">  327</span>    }</div>
+<div class="line"><span class="lineno">  328</span>    <span class="keywordflow">return</span> eStatus;</div>
+<div class="line"><span class="lineno">  329</span>}</div>
+<div class="ttc" id="amb_8c_html_a043a961601eba48ca372b99f5c67ec3c"><div class="ttname"><a href="mb_8c.html#a043a961601eba48ca372b99f5c67ec3c">pvMBFrameStopCur</a></div><div class="ttdeci">static pvMBFrameStop pvMBFrameStopCur</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00077">mb.c:77</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab697be370833d562e6b016626d996132" name="ab697be370833d562e6b016626d996132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab697be370833d562e6b016626d996132">&#9670;&#160;</a></span>eMBEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">eMBErrorCode eMBEnable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00292">292</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  293</span>{</div>
+<div class="line"><span class="lineno">  294</span>    eMBErrorCode    eStatus = MB_ENOERR;</div>
+<div class="line"><span class="lineno">  295</span> </div>
+<div class="line"><span class="lineno">  296</span>    <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> == <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b">STATE_DISABLED</a> )</div>
+<div class="line"><span class="lineno">  297</span>    {</div>
+<div class="line"><span class="lineno">  298</span>        <span class="comment">/* Activate the protocol stack. */</span></div>
+<div class="line"><span class="lineno">  299</span>        <a class="code hl_variable" href="mb_8c.html#ae5cc9150f4c154d4c4983fa551b0c2c1">pvMBFrameStartCur</a>(  );</div>
+<div class="line"><span class="lineno">  300</span>        <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> = <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca">STATE_ENABLED</a>;</div>
+<div class="line"><span class="lineno">  301</span>    }</div>
+<div class="line"><span class="lineno">  302</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  303</span>    {</div>
+<div class="line"><span class="lineno">  304</span>        eStatus = MB_EILLSTATE;</div>
+<div class="line"><span class="lineno">  305</span>    }</div>
+<div class="line"><span class="lineno">  306</span>    <span class="keywordflow">return</span> eStatus;</div>
+<div class="line"><span class="lineno">  307</span>}</div>
+<div class="ttc" id="amb_8c_html_ae5cc9150f4c154d4c4983fa551b0c2c1"><div class="ttname"><a href="mb_8c.html#ae5cc9150f4c154d4c4983fa551b0c2c1">pvMBFrameStartCur</a></div><div class="ttdeci">static pvMBFrameStart pvMBFrameStartCur</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00076">mb.c:76</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a622dbe6b38ff1d255523d4736fa3da26" name="a622dbe6b38ff1d255523d4736fa3da26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a622dbe6b38ff1d255523d4736fa3da26">&#9670;&#160;</a></span>eMBInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">eMBErrorCode eMBInit </td>
+          <td>(</td>
+          <td class="paramtype">eMBMode&#160;</td>
+          <td class="paramname"><em>eMode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UCHAR&#160;</td>
+          <td class="paramname"><em>ucSlaveAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UCHAR&#160;</td>
+          <td class="paramname"><em>ucPort</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ULONG&#160;</td>
+          <td class="paramname"><em>ulBaudRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">eMBParity&#160;</td>
+          <td class="paramname"><em>eParity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00130">130</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  131</span>{</div>
+<div class="line"><span class="lineno">  132</span>    eMBErrorCode    eStatus = MB_ENOERR;</div>
+<div class="line"><span class="lineno">  133</span> </div>
+<div class="line"><span class="lineno">  134</span>    <span class="comment">/* check preconditions */</span></div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span>( ( ucSlaveAddress == MB_ADDRESS_BROADCAST ) ||</div>
+<div class="line"><span class="lineno">  136</span>        ( ucSlaveAddress &lt; MB_ADDRESS_MIN ) || ( ucSlaveAddress &gt; MB_ADDRESS_MAX ) )</div>
+<div class="line"><span class="lineno">  137</span>    {</div>
+<div class="line"><span class="lineno">  138</span>        eStatus = MB_EINVAL;</div>
+<div class="line"><span class="lineno">  139</span>    }</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  141</span>    {</div>
+<div class="line"><span class="lineno">  142</span>        <a class="code hl_variable" href="mb_8c.html#a49d81a2027be5b1914a9aca31bb1a9ae">ucMBAddress</a> = ucSlaveAddress;</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">switch</span> ( eMode )</div>
+<div class="line"><span class="lineno">  145</span>        {</div>
+<div class="line"><span class="lineno">  146</span><span class="preprocessor">#if MB_RTU_ENABLED &gt; 0</span></div>
+<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">case</span> MB_RTU:</div>
+<div class="line"><span class="lineno">  148</span>            <a class="code hl_variable" href="mb_8c.html#ae5cc9150f4c154d4c4983fa551b0c2c1">pvMBFrameStartCur</a> = eMBRTUStart;</div>
+<div class="line"><span class="lineno">  149</span>            <a class="code hl_variable" href="mb_8c.html#a043a961601eba48ca372b99f5c67ec3c">pvMBFrameStopCur</a> = eMBRTUStop;</div>
+<div class="line"><span class="lineno">  150</span>            <a class="code hl_variable" href="mb_8c.html#ae9daf4765e9a354a64f171108ace3094">peMBFrameSendCur</a> = eMBRTUSend;</div>
+<div class="line"><span class="lineno">  151</span>            <a class="code hl_variable" href="mb_8c.html#a9e7657161e4e14b266f0f20d3ad8eda5">peMBFrameReceiveCur</a> = eMBRTUReceive;</div>
+<div class="line"><span class="lineno">  152</span>            <a class="code hl_variable" href="mb_8c.html#aef5110f3d47305125c738986dbe85e0d">pvMBFrameCloseCur</a> = <a class="code hl_define" href="mb_8c.html#a63c1fbefc04d96d29ef84407e22c4e3e">MB_PORT_HAS_CLOSE</a> ? vMBPortClose : NULL;</div>
+<div class="line"><span class="lineno">  153</span>            <a class="code hl_variable" href="mb_8c.html#a6ff9d563210c04e3afb414b9db75154a">pxMBFrameCBByteReceived</a> = xMBRTUReceiveFSM;</div>
+<div class="line"><span class="lineno">  154</span>            <a class="code hl_variable" href="mb_8c.html#a46ac9d979eaaeb885415014a0cb350b2">pxMBFrameCBTransmitterEmpty</a> = xMBRTUTransmitFSM;</div>
+<div class="line"><span class="lineno">  155</span>            <a class="code hl_variable" href="mb_8c.html#a3ca010d1cf1b3bda066f0d65641d9055">pxMBPortCBTimerExpired</a> = xMBRTUTimerT35Expired;</div>
+<div class="line"><span class="lineno">  156</span> </div>
+<div class="line"><span class="lineno">  157</span>            eStatus = eMBRTUInit( <a class="code hl_variable" href="mb_8c.html#a49d81a2027be5b1914a9aca31bb1a9ae">ucMBAddress</a>, ucPort, ulBaudRate, eParity );</div>
+<div class="line"><span class="lineno">  158</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  159</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  160</span><span class="preprocessor">#if MB_ASCII_ENABLED &gt; 0</span></div>
+<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">case</span> MB_ASCII:</div>
+<div class="line"><span class="lineno">  162</span>            <a class="code hl_variable" href="mb_8c.html#ae5cc9150f4c154d4c4983fa551b0c2c1">pvMBFrameStartCur</a> = eMBASCIIStart;</div>
+<div class="line"><span class="lineno">  163</span>            <a class="code hl_variable" href="mb_8c.html#a043a961601eba48ca372b99f5c67ec3c">pvMBFrameStopCur</a> = eMBASCIIStop;</div>
+<div class="line"><span class="lineno">  164</span>            <a class="code hl_variable" href="mb_8c.html#ae9daf4765e9a354a64f171108ace3094">peMBFrameSendCur</a> = eMBASCIISend;</div>
+<div class="line"><span class="lineno">  165</span>            <a class="code hl_variable" href="mb_8c.html#a9e7657161e4e14b266f0f20d3ad8eda5">peMBFrameReceiveCur</a> = eMBASCIIReceive;</div>
+<div class="line"><span class="lineno">  166</span>            <a class="code hl_variable" href="mb_8c.html#aef5110f3d47305125c738986dbe85e0d">pvMBFrameCloseCur</a> = <a class="code hl_define" href="mb_8c.html#a63c1fbefc04d96d29ef84407e22c4e3e">MB_PORT_HAS_CLOSE</a> ? vMBPortClose : NULL;</div>
+<div class="line"><span class="lineno">  167</span>            <a class="code hl_variable" href="mb_8c.html#a6ff9d563210c04e3afb414b9db75154a">pxMBFrameCBByteReceived</a> = xMBASCIIReceiveFSM;</div>
+<div class="line"><span class="lineno">  168</span>            <a class="code hl_variable" href="mb_8c.html#a46ac9d979eaaeb885415014a0cb350b2">pxMBFrameCBTransmitterEmpty</a> = xMBASCIITransmitFSM;</div>
+<div class="line"><span class="lineno">  169</span>            <a class="code hl_variable" href="mb_8c.html#a3ca010d1cf1b3bda066f0d65641d9055">pxMBPortCBTimerExpired</a> = xMBASCIITimerT1SExpired;</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>            eStatus = eMBASCIIInit( <a class="code hl_variable" href="mb_8c.html#a49d81a2027be5b1914a9aca31bb1a9ae">ucMBAddress</a>, ucPort, ulBaudRate, eParity );</div>
+<div class="line"><span class="lineno">  172</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  173</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  174</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  175</span>            eStatus = MB_EINVAL;</div>
+<div class="line"><span class="lineno">  176</span>        }</div>
+<div class="line"><span class="lineno">  177</span> </div>
+<div class="line"><span class="lineno">  178</span>        <span class="keywordflow">if</span>( eStatus == MB_ENOERR )</div>
+<div class="line"><span class="lineno">  179</span>        {</div>
+<div class="line"><span class="lineno">  180</span>            <span class="keywordflow">if</span>( !xMBPortEventInit(  ) )</div>
+<div class="line"><span class="lineno">  181</span>            {</div>
+<div class="line"><span class="lineno">  182</span>                <span class="comment">/* port dependent event module initalization failed. */</span></div>
+<div class="line"><span class="lineno">  183</span>                eStatus = MB_EPORTERR;</div>
+<div class="line"><span class="lineno">  184</span>            }</div>
+<div class="line"><span class="lineno">  185</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  186</span>            {</div>
+<div class="line"><span class="lineno">  187</span>                <a class="code hl_variable" href="mb_8c.html#a288653bd38728bea3b3c705f25d87483">eMBCurrentMode</a> = eMode;</div>
+<div class="line"><span class="lineno">  188</span>                <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> = <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55bad2199361daff83037e3f6aaccaa5a91b">STATE_DISABLED</a>;</div>
+<div class="line"><span class="lineno">  189</span>            }</div>
+<div class="line"><span class="lineno">  190</span>        }</div>
+<div class="line"><span class="lineno">  191</span>    }</div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">return</span> eStatus;</div>
+<div class="line"><span class="lineno">  193</span>}</div>
+<div class="ttc" id="amb_8c_html_a288653bd38728bea3b3c705f25d87483"><div class="ttname"><a href="mb_8c.html#a288653bd38728bea3b3c705f25d87483">eMBCurrentMode</a></div><div class="ttdeci">static eMBMode eMBCurrentMode</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00063">mb.c:63</a></div></div>
+<div class="ttc" id="amb_8c_html_a3ca010d1cf1b3bda066f0d65641d9055"><div class="ttname"><a href="mb_8c.html#a3ca010d1cf1b3bda066f0d65641d9055">pxMBPortCBTimerExpired</a></div><div class="ttdeci">BOOL(* pxMBPortCBTimerExpired)(void)</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00087">mb.c:87</a></div></div>
+<div class="ttc" id="amb_8c_html_a46ac9d979eaaeb885415014a0cb350b2"><div class="ttname"><a href="mb_8c.html#a46ac9d979eaaeb885415014a0cb350b2">pxMBFrameCBTransmitterEmpty</a></div><div class="ttdeci">BOOL(* pxMBFrameCBTransmitterEmpty)(void)</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00086">mb.c:86</a></div></div>
+<div class="ttc" id="amb_8c_html_a49d81a2027be5b1914a9aca31bb1a9ae"><div class="ttname"><a href="mb_8c.html#a49d81a2027be5b1914a9aca31bb1a9ae">ucMBAddress</a></div><div class="ttdeci">static UCHAR ucMBAddress</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00062">mb.c:62</a></div></div>
+<div class="ttc" id="amb_8c_html_a63c1fbefc04d96d29ef84407e22c4e3e"><div class="ttname"><a href="mb_8c.html#a63c1fbefc04d96d29ef84407e22c4e3e">MB_PORT_HAS_CLOSE</a></div><div class="ttdeci">#define MB_PORT_HAS_CLOSE</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00057">mb.c:57</a></div></div>
+<div class="ttc" id="amb_8c_html_a6ff9d563210c04e3afb414b9db75154a"><div class="ttname"><a href="mb_8c.html#a6ff9d563210c04e3afb414b9db75154a">pxMBFrameCBByteReceived</a></div><div class="ttdeci">BOOL(* pxMBFrameCBByteReceived)(void)</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00085">mb.c:85</a></div></div>
+<div class="ttc" id="amb_8c_html_a9e7657161e4e14b266f0f20d3ad8eda5"><div class="ttname"><a href="mb_8c.html#a9e7657161e4e14b266f0f20d3ad8eda5">peMBFrameReceiveCur</a></div><div class="ttdeci">static peMBFrameReceive peMBFrameReceiveCur</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00078">mb.c:78</a></div></div>
+<div class="ttc" id="amb_8c_html_ae9daf4765e9a354a64f171108ace3094"><div class="ttname"><a href="mb_8c.html#ae9daf4765e9a354a64f171108ace3094">peMBFrameSendCur</a></div><div class="ttdeci">static peMBFrameSend peMBFrameSendCur</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00075">mb.c:75</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a12648c98d45f768ba878fbcee46caca5" name="a12648c98d45f768ba878fbcee46caca5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12648c98d45f768ba878fbcee46caca5">&#9670;&#160;</a></span>eMBPoll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">eMBErrorCode eMBPoll </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00332">332</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  333</span>{</div>
+<div class="line"><span class="lineno">  334</span>    <span class="keyword">static</span> UCHAR   *ucMBFrame;</div>
+<div class="line"><span class="lineno">  335</span>    <span class="keyword">static</span> UCHAR    ucRcvAddress;</div>
+<div class="line"><span class="lineno">  336</span>    <span class="keyword">static</span> UCHAR    ucFunctionCode;</div>
+<div class="line"><span class="lineno">  337</span>    <span class="keyword">static</span> USHORT   usLength;</div>
+<div class="line"><span class="lineno">  338</span>    <span class="keyword">static</span> eMBException eException;</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordtype">int</span>             i;</div>
+<div class="line"><span class="lineno">  341</span>    eMBErrorCode    eStatus = MB_ENOERR;</div>
+<div class="line"><span class="lineno">  342</span>    eMBEventType    eEvent;</div>
+<div class="line"><span class="lineno">  343</span> </div>
+<div class="line"><span class="lineno">  344</span>    <span class="comment">/* Check if the protocol stack is ready. */</span></div>
+<div class="line"><span class="lineno">  345</span>    <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#a1ccc6954ab86e45b13f3c0536fd66315">eMBState</a> != <a class="code hl_enumvalue" href="mb_8c.html#a06fc87d81c62e9abb8790b6e5713c55ba94a5ceac60e29b414570d8fec5d459ca">STATE_ENABLED</a> )</div>
+<div class="line"><span class="lineno">  346</span>    {</div>
+<div class="line"><span class="lineno">  347</span>        <span class="keywordflow">return</span> MB_EILLSTATE;</div>
+<div class="line"><span class="lineno">  348</span>    }</div>
+<div class="line"><span class="lineno">  349</span> </div>
+<div class="line"><span class="lineno">  350</span>    <span class="comment">/* Check if there is a event available. If not return control to caller.</span></div>
+<div class="line"><span class="lineno">  351</span><span class="comment">     * Otherwise we will handle the event. */</span></div>
+<div class="line"><span class="lineno">  352</span>    <span class="keywordflow">if</span>( xMBPortEventGet( &amp;eEvent ) == TRUE )</div>
+<div class="line"><span class="lineno">  353</span>    {</div>
+<div class="line"><span class="lineno">  354</span>        <span class="keywordflow">switch</span> ( eEvent )</div>
+<div class="line"><span class="lineno">  355</span>        {</div>
+<div class="line"><span class="lineno">  356</span>        <span class="keywordflow">case</span> EV_READY:</div>
+<div class="line"><span class="lineno">  357</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  358</span> </div>
+<div class="line"><span class="lineno">  359</span>        <span class="keywordflow">case</span> EV_FRAME_RECEIVED:</div>
+<div class="line"><span class="lineno">  360</span>            eStatus = <a class="code hl_variable" href="mb_8c.html#a9e7657161e4e14b266f0f20d3ad8eda5">peMBFrameReceiveCur</a>( &amp;ucRcvAddress, &amp;ucMBFrame, &amp;usLength );</div>
+<div class="line"><span class="lineno">  361</span>            <span class="keywordflow">if</span>( eStatus == MB_ENOERR )</div>
+<div class="line"><span class="lineno">  362</span>            {</div>
+<div class="line"><span class="lineno">  363</span>                <span class="comment">/* Check if the frame is for us. If not ignore the frame. */</span></div>
+<div class="line"><span class="lineno">  364</span>                <span class="keywordflow">if</span>( ( ucRcvAddress == <a class="code hl_variable" href="mb_8c.html#a49d81a2027be5b1914a9aca31bb1a9ae">ucMBAddress</a> ) || ( ucRcvAddress == MB_ADDRESS_BROADCAST ) )</div>
+<div class="line"><span class="lineno">  365</span>                {</div>
+<div class="line"><span class="lineno">  366</span>                    ( void )xMBPortEventPost( EV_EXECUTE );</div>
+<div class="line"><span class="lineno">  367</span>                }</div>
+<div class="line"><span class="lineno">  368</span>            }</div>
+<div class="line"><span class="lineno">  369</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  370</span> </div>
+<div class="line"><span class="lineno">  371</span>        <span class="keywordflow">case</span> EV_EXECUTE:</div>
+<div class="line"><span class="lineno">  372</span>            ucFunctionCode = ucMBFrame[MB_PDU_FUNC_OFF];</div>
+<div class="line"><span class="lineno">  373</span>            eException = MB_EX_ILLEGAL_FUNCTION;</div>
+<div class="line"><span class="lineno">  374</span>            <span class="keywordflow">for</span>( i = 0; i &lt; MB_FUNC_HANDLERS_MAX; i++ )</div>
+<div class="line"><span class="lineno">  375</span>            {</div>
+<div class="line"><span class="lineno">  376</span>                <span class="comment">/* No more function handlers registered. Abort. */</span></div>
+<div class="line"><span class="lineno">  377</span>                <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].ucFunctionCode == 0 )</div>
+<div class="line"><span class="lineno">  378</span>                {</div>
+<div class="line"><span class="lineno">  379</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  380</span>                }</div>
+<div class="line"><span class="lineno">  381</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].ucFunctionCode == ucFunctionCode )</div>
+<div class="line"><span class="lineno">  382</span>                {</div>
+<div class="line"><span class="lineno">  383</span>                    eException = <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].pxHandler( ucMBFrame, &amp;usLength );</div>
+<div class="line"><span class="lineno">  384</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  385</span>                }</div>
+<div class="line"><span class="lineno">  386</span>            }</div>
+<div class="line"><span class="lineno">  387</span> </div>
+<div class="line"><span class="lineno">  388</span>            <span class="comment">/* If the request was not sent to the broadcast address we</span></div>
+<div class="line"><span class="lineno">  389</span><span class="comment">             * return a reply. */</span></div>
+<div class="line"><span class="lineno">  390</span>            <span class="keywordflow">if</span>( ucRcvAddress != MB_ADDRESS_BROADCAST )</div>
+<div class="line"><span class="lineno">  391</span>            {</div>
+<div class="line"><span class="lineno">  392</span>                <span class="keywordflow">if</span>( eException != MB_EX_NONE )</div>
+<div class="line"><span class="lineno">  393</span>                {</div>
+<div class="line"><span class="lineno">  394</span>                    <span class="comment">/* An exception occured. Build an error frame. */</span></div>
+<div class="line"><span class="lineno">  395</span>                    usLength = 0;</div>
+<div class="line"><span class="lineno">  396</span>                    ucMBFrame[usLength++] = ( UCHAR )( ucFunctionCode | MB_FUNC_ERROR );</div>
+<div class="line"><span class="lineno">  397</span>                    ucMBFrame[usLength++] = eException;</div>
+<div class="line"><span class="lineno">  398</span>                }</div>
+<div class="line"><span class="lineno">  399</span>                <span class="keywordflow">if</span>( ( <a class="code hl_variable" href="mb_8c.html#a288653bd38728bea3b3c705f25d87483">eMBCurrentMode</a> == MB_ASCII ) &amp;&amp; MB_ASCII_TIMEOUT_WAIT_BEFORE_SEND_MS )</div>
+<div class="line"><span class="lineno">  400</span>                {</div>
+<div class="line"><span class="lineno">  401</span>                    vMBPortTimersDelay( MB_ASCII_TIMEOUT_WAIT_BEFORE_SEND_MS );</div>
+<div class="line"><span class="lineno">  402</span>                }                </div>
+<div class="line"><span class="lineno">  403</span>                eStatus = <a class="code hl_variable" href="mb_8c.html#ae9daf4765e9a354a64f171108ace3094">peMBFrameSendCur</a>( <a class="code hl_variable" href="mb_8c.html#a49d81a2027be5b1914a9aca31bb1a9ae">ucMBAddress</a>, ucMBFrame, usLength );</div>
+<div class="line"><span class="lineno">  404</span>            }</div>
+<div class="line"><span class="lineno">  405</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  406</span> </div>
+<div class="line"><span class="lineno">  407</span>        <span class="keywordflow">case</span> EV_FRAME_SENT:</div>
+<div class="line"><span class="lineno">  408</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  409</span>        }</div>
+<div class="line"><span class="lineno">  410</span>    }</div>
+<div class="line"><span class="lineno">  411</span>    <span class="keywordflow">return</span> MB_ENOERR;</div>
+<div class="line"><span class="lineno">  412</span>}</div>
+<div class="ttc" id="amb_8c_html_af7285b4571ef7138b23ddc3b2d079539"><div class="ttname"><a href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a></div><div class="ttdeci">static xMBFunctionHandler xFuncHandlers[MB_FUNC_HANDLERS_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="mb_8c_source.html#l00095">mb.c:95</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5f6e66893b2388a602ac453253a00784" name="a5f6e66893b2388a602ac453253a00784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f6e66893b2388a602ac453253a00784">&#9670;&#160;</a></span>eMBRegisterCB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">eMBErrorCode eMBRegisterCB </td>
+          <td>(</td>
+          <td class="paramtype">UCHAR&#160;</td>
+          <td class="paramname"><em>ucFunctionCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pxMBFunctionHandler&#160;</td>
+          <td class="paramname"><em>pxHandler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00226">226</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  227</span>{</div>
+<div class="line"><span class="lineno">  228</span>    <span class="keywordtype">int</span>             i;</div>
+<div class="line"><span class="lineno">  229</span>    eMBErrorCode    eStatus;</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span>( ( 0 &lt; ucFunctionCode ) &amp;&amp; ( ucFunctionCode &lt;= 127 ) )</div>
+<div class="line"><span class="lineno">  232</span>    {</div>
+<div class="line"><span class="lineno">  233</span>        ENTER_CRITICAL_SECTION(  );</div>
+<div class="line"><span class="lineno">  234</span>        <span class="keywordflow">if</span>( pxHandler != NULL )</div>
+<div class="line"><span class="lineno">  235</span>        {</div>
+<div class="line"><span class="lineno">  236</span>            <span class="keywordflow">for</span>( i = 0; i &lt; MB_FUNC_HANDLERS_MAX; i++ )</div>
+<div class="line"><span class="lineno">  237</span>            {</div>
+<div class="line"><span class="lineno">  238</span>                <span class="keywordflow">if</span>( ( <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].pxHandler == NULL ) ||</div>
+<div class="line"><span class="lineno">  239</span>                    ( <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].pxHandler == pxHandler ) )</div>
+<div class="line"><span class="lineno">  240</span>                {</div>
+<div class="line"><span class="lineno">  241</span>                    <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].ucFunctionCode = ucFunctionCode;</div>
+<div class="line"><span class="lineno">  242</span>                    <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].pxHandler = pxHandler;</div>
+<div class="line"><span class="lineno">  243</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  244</span>                }</div>
+<div class="line"><span class="lineno">  245</span>            }</div>
+<div class="line"><span class="lineno">  246</span>            eStatus = ( i != MB_FUNC_HANDLERS_MAX ) ? MB_ENOERR : MB_ENORES;</div>
+<div class="line"><span class="lineno">  247</span>        }</div>
+<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  249</span>        {</div>
+<div class="line"><span class="lineno">  250</span>            <span class="keywordflow">for</span>( i = 0; i &lt; MB_FUNC_HANDLERS_MAX; i++ )</div>
+<div class="line"><span class="lineno">  251</span>            {</div>
+<div class="line"><span class="lineno">  252</span>                <span class="keywordflow">if</span>( <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].ucFunctionCode == ucFunctionCode )</div>
+<div class="line"><span class="lineno">  253</span>                {</div>
+<div class="line"><span class="lineno">  254</span>                    <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].ucFunctionCode = 0;</div>
+<div class="line"><span class="lineno">  255</span>                    <a class="code hl_variable" href="mb_8c.html#af7285b4571ef7138b23ddc3b2d079539">xFuncHandlers</a>[i].pxHandler = NULL;</div>
+<div class="line"><span class="lineno">  256</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  257</span>                }</div>
+<div class="line"><span class="lineno">  258</span>            }</div>
+<div class="line"><span class="lineno">  259</span>            <span class="comment">/* Remove can&#39;t fail. */</span></div>
+<div class="line"><span class="lineno">  260</span>            eStatus = MB_ENOERR;</div>
+<div class="line"><span class="lineno">  261</span>        }</div>
+<div class="line"><span class="lineno">  262</span>        EXIT_CRITICAL_SECTION(  );</div>
+<div class="line"><span class="lineno">  263</span>    }</div>
+<div class="line"><span class="lineno">  264</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  265</span>    {</div>
+<div class="line"><span class="lineno">  266</span>        eStatus = MB_EINVAL;</div>
+<div class="line"><span class="lineno">  267</span>    }</div>
+<div class="line"><span class="lineno">  268</span>    <span class="keywordflow">return</span> eStatus;</div>
+<div class="line"><span class="lineno">  269</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Переменные</h2>
+<a id="a288653bd38728bea3b3c705f25d87483" name="a288653bd38728bea3b3c705f25d87483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a288653bd38728bea3b3c705f25d87483">&#9670;&#160;</a></span>eMBCurrentMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">eMBMode eMBCurrentMode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00063">63</a></p>
+
+</div>
+</div>
+<a id="a1ccc6954ab86e45b13f3c0536fd66315" name="a1ccc6954ab86e45b13f3c0536fd66315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ccc6954ab86e45b13f3c0536fd66315">&#9670;&#160;</a></span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum  { ... }  eMBState</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e7657161e4e14b266f0f20d3ad8eda5" name="a9e7657161e4e14b266f0f20d3ad8eda5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e7657161e4e14b266f0f20d3ad8eda5">&#9670;&#160;</a></span>peMBFrameReceiveCur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">peMBFrameReceive peMBFrameReceiveCur</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00078">78</a></p>
+
+</div>
+</div>
+<a id="ae9daf4765e9a354a64f171108ace3094" name="ae9daf4765e9a354a64f171108ace3094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9daf4765e9a354a64f171108ace3094">&#9670;&#160;</a></span>peMBFrameSendCur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">peMBFrameSend peMBFrameSendCur</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00075">75</a></p>
+
+</div>
+</div>
+<a id="aef5110f3d47305125c738986dbe85e0d" name="aef5110f3d47305125c738986dbe85e0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef5110f3d47305125c738986dbe85e0d">&#9670;&#160;</a></span>pvMBFrameCloseCur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pvMBFrameClose pvMBFrameCloseCur</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00079">79</a></p>
+
+</div>
+</div>
+<a id="ae5cc9150f4c154d4c4983fa551b0c2c1" name="ae5cc9150f4c154d4c4983fa551b0c2c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5cc9150f4c154d4c4983fa551b0c2c1">&#9670;&#160;</a></span>pvMBFrameStartCur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pvMBFrameStart pvMBFrameStartCur</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00076">76</a></p>
+
+</div>
+</div>
+<a id="a043a961601eba48ca372b99f5c67ec3c" name="a043a961601eba48ca372b99f5c67ec3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a043a961601eba48ca372b99f5c67ec3c">&#9670;&#160;</a></span>pvMBFrameStopCur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pvMBFrameStop pvMBFrameStopCur</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00077">77</a></p>
+
+</div>
+</div>
+<a id="a6ff9d563210c04e3afb414b9db75154a" name="a6ff9d563210c04e3afb414b9db75154a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ff9d563210c04e3afb414b9db75154a">&#9670;&#160;</a></span>pxMBFrameCBByteReceived</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BOOL(* pxMBFrameCBByteReceived) (void) </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00085">85</a></p>
+
+</div>
+</div>
+<a id="a9363e9558a3370aa7f877b5414e83a31" name="a9363e9558a3370aa7f877b5414e83a31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9363e9558a3370aa7f877b5414e83a31">&#9670;&#160;</a></span>pxMBFrameCBReceiveFSMCur</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BOOL(* pxMBFrameCBReceiveFSMCur) (void) </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00089">89</a></p>
+
+</div>
+</div>
+<a id="a590a5400a72de0dcbce5f383a67a5093" name="a590a5400a72de0dcbce5f383a67a5093"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a590a5400a72de0dcbce5f383a67a5093">&#9670;&#160;</a></span>pxMBFrameCBTransmitFSMCur</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BOOL(* pxMBFrameCBTransmitFSMCur) (void) </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00090">90</a></p>
+
+</div>
+</div>
+<a id="a46ac9d979eaaeb885415014a0cb350b2" name="a46ac9d979eaaeb885415014a0cb350b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46ac9d979eaaeb885415014a0cb350b2">&#9670;&#160;</a></span>pxMBFrameCBTransmitterEmpty</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BOOL(* pxMBFrameCBTransmitterEmpty) (void) </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00086">86</a></p>
+
+</div>
+</div>
+<a id="a3ca010d1cf1b3bda066f0d65641d9055" name="a3ca010d1cf1b3bda066f0d65641d9055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ca010d1cf1b3bda066f0d65641d9055">&#9670;&#160;</a></span>pxMBPortCBTimerExpired</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BOOL(* pxMBPortCBTimerExpired) (void) </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00087">87</a></p>
+
+</div>
+</div>
+<a id="a49d81a2027be5b1914a9aca31bb1a9ae" name="a49d81a2027be5b1914a9aca31bb1a9ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d81a2027be5b1914a9aca31bb1a9ae">&#9670;&#160;</a></span>ucMBAddress</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UCHAR ucMBAddress</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00062">62</a></p>
+
+</div>
+</div>
+<a id="af7285b4571ef7138b23ddc3b2d079539" name="af7285b4571ef7138b23ddc3b2d079539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7285b4571ef7138b23ddc3b2d079539">&#9670;&#160;</a></span>xFuncHandlers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">xMBFunctionHandler xFuncHandlers[MB_FUNC_HANDLERS_MAX]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="mb_8c_source.html">mb.c</a> строка <a class="el" href="mb_8c_source.html#l00095">95</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e15da0c04fcf3530559bdb8397602a27.html">freemodbus-v1.5.0</a></li><li class="navelem"><a class="el" href="dir_ad1e619b62baad98eaffd456f68f34e7.html">modbus</a></li><li class="navelem"><a class="el" href="mb_8c.html">mb.c</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
+</body>
+</html>
